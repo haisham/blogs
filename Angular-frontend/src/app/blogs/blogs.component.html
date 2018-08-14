@@ -1,0 +1,28 @@
+  <div class="row">
+    <div class="col-md-12">
+
+      <div *ngIf="Blogs && Blogs.length > 0">
+        <h2 class="py-2">{{blogsTitle}}</h2>
+        <hr>
+        <div class="row card-group text-center" *ngFor="let Blog of Blogs">
+            <div class="col-sm-6 py-2 d-flex align-items-stretch" >
+                <div class="card text-center">
+                    <div class="card-header">
+                        <h5 class="float-left">{{Blog.title}}</h5>
+<!--                        <span class="float-right"><i (click)="registerationOverview(Blog)" class="fa fa-info-circle"></i></span>-->
+                    </div>
+                    <div class="card-body h-100">
+                        <p class="card-text p-4">{{Blog.description}}</p>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <a class="btn btn-primary" routerLink="/posts/{{Blog.id}}" routerLinkActive="active">se indlæg</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>

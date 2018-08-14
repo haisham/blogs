@@ -1,0 +1,36 @@
+<div *ngFor="let Post of PostData; let i = index">
+    <div class="modal-header">
+        <h4 class="modal-title">{{Post.title}}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="closeViewPostModal()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        {{Post.content}}
+        <div class='py-4'></div>
+        <h6>kommentarer</h6>
+        <hr>
+        <div *ngFor="let Comments of Post.comments" class="py-2">
+
+            <div class="comments-list">
+                <div class="media">
+                    <div class="media-body float-left">
+                        <small class="float-right">{{Comments.created_at}}</small>
+                        <h4 class="media-heading user_name">{{Comments.creator_name}}</h4>
+                        {{Comments.comment}}
+                        
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <form class="py-4" [formGroup] = "formdata" (ngSubmit) = "onClickSubmit(formdata.value)" >
+            <div class="form-group">
+                <input class="form-control" type = "text" name = "commentValue" placeholder = "din kommentar" formControlName = "commentValue" />
+            </div>
+            <input class="btn btn-primary" type = "submit" [disabled] = "!formdata.valid" value = "Send" />
+
+        </form>
+    </div>
+</div>
